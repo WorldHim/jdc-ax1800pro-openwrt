@@ -54,7 +54,7 @@
 
 ## 1. 准备
 
-下载[本仓库](https://github.com/WorldHim/jdc-ax1800pro-openwrt)并解压备用
+下载[刷机套件](https://github.com/WorldHim/jdc-ax1800pro-openwrt/releases/download/v1.0/jdc-ax1800pro-openwrt.7z)并解压备用
 
 后续所有命令行操作均在仓库根目录下执行
 
