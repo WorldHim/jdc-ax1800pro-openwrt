@@ -291,3 +291,7 @@ Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 
 *本文基于真实的刷机过程整理，命令与数据均来自实机实测。刷机有风险，操作前请确保已完成完整备份。*
 *部分代码由 AI 生成*
+
+---
+
+本文采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) 许可协议。转载请注明出处！
