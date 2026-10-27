@@ -38,7 +38,7 @@
 
 | 文件 | 大小 | 用途 | 校验值 |
 |---|---|---|---|
-| `uboot-flashfiles-ss-01.bin` | **655360** 字节 | 替换原厂 U-Boot | MD5 `2266697f5106c170a91e283adf7a3d19` |
+| `uboot-flashfiles-ss-01.bin` | **655360** 字节 | 替换原厂 U-Boot | SHA256 `0fb6879f2bdb1bdc48f0dbcbbd8383ef3328f88c957601ce1e2363ffec647311` |
 | `gpt-AX1800Pro-rootfs2048M.bin` | **17408** 字节 | 扩容分区表（rootfs 60 MiB → 2 GiB） | MD5 `4e68b53b2646a4824aed74a4f5b656ea` |
 | `libwrt-factory.bin` | **117243904** 字节 | OpenWrt 固件 | SHA256 `5241f47317f7148c1dba997d74775ef3343ecbc4fdb21c690ccf43bbd70fd6d6` |
 
@@ -286,6 +286,29 @@ Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 | `send-file.ps1` | `-BindIp` | `string` | 绑定 IP |
 | `send-file.ps1` | `-Port` | `int` | 绑定端口 |
 | `send-file.ps1` | `-Seconds` | `int` | 超时时间 |
+
+---
+
+## 参考资料与致谢
+
+### 教程
+
+1. [gwrt.uk《京东云亚瑟免拆开启 Telnet 教程（4.5.3.r4546）》](https://gwrt.uk/jdc-arthur-telnet-4546.html)
+2. [8477667](https://www.right.com.cn/forum/thread-8477667-1-1.html)（V-2333）
+3. 恩山 [8477903](https://www.right.com.cn/forum/thread-8477903-1-1.html)（rogueboy《新手刷机完全版》）
+4. 恩山 [8494030](https://www.right.com.cn/forum/thread-8494030-1-1.html)
+5. 数码罗记 [京东云无线宝 AX1800Pro 亚瑟 RE-SS-01 第三方OpenWrt刷机记录](https://godsun.pro/blog/jdc-ax1800pro-flash.html)
+6. 数码罗记 [京东云盒 IPQ6018 刷机指南](https://gwrt.uk/jdcloud-ipq6018-flash-guide.html)
+6. lgs2007m（咖啡猫）《分区备份 + TTL 双分区刷机 + 回原厂 + USB 救砖教程》
+7. 小猫佩奇、XOS（gwrt 文中致谢） 
+
+### 固件
+
+| 文件 | 来源 | 下载 | 校验值 |
+|---|---|---|---|
+| `uboot-flashfiles-ss-01.bin` | [chenxin527/uboot-ipq60xx-emmc-build](https://github.com/chenxin527/uboot-ipq60xx-emmc-build) | [uboot-ipq60xx-emmc-jdcloud_re-ss-01-260102.153309.bin](https://github.com/chenxin527/uboot-ipq60xx-emmc-build/releases/download/26.01.02-15.33.09/uboot-ipq60xx-emmc-jdcloud_re-ss-01-260102.153309.bin) | `sha256:0fb6879f2bdb1bdc48f0dbcbbd8383ef3328f88c957601ce1e2363ffec647311` |
+| `gpt-AX1800Pro-rootfs2048M.bin` | [京东云盒 IPQ6018 刷机指南](https://gwrt.uk/jdcloud-ipq6018-flash-guide.html) | [gpt-AX1800Pro-rootfs2048M.bin](https://godsun.pro/wp-content/uploads/flash-files/gpt-AX1800Pro-rootfs2048M.bin) | `md5:4e68b53b2646a4824aed74a4f5b656ea` |
+| `libwrt-factory.bin` | [xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01) | [libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01/releases/download/re-ss-01-4-1/libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin) | `sha256:5241f47317f7148c1dba997d74775ef3343ecbc4fdb21c690ccf43bbd70fd6d6` |
 
 ---
 
