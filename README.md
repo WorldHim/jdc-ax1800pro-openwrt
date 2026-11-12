@@ -40,7 +40,7 @@
 |---|---|---|---|
 | `uboot-flashfiles-ss-01.bin` | **655360** 字节 | 替换原厂 U-Boot | SHA256 `0fb6879f2bdb1bdc48f0dbcbbd8383ef3328f88c957601ce1e2363ffec647311` |
 | `gpt-AX1800Pro-rootfs2048M.bin` | **17408** 字节 | 扩容分区表（rootfs 60 MiB → 2 GiB） | MD5 `4e68b53b2646a4824aed74a4f5b656ea` |
-| `libwrt-factory.bin` | **117243904** 字节 | OpenWrt 固件 | SHA256 `5241f47317f7148c1dba997d74775ef3343ecbc4fdb21c690ccf43bbd70fd6d6` |
+| `openwrt-squashfs-factory.bin` | **117243904** 字节 | OpenWrt 固件 | SHA256 `8e1b0fe45aad68fd4584fdb8980e11f4b1695ad57128335863ab5b93e741964a` |
 
 **务必核对这三个文件是否无误**
 
@@ -54,7 +54,7 @@
 
 ## 1. 准备
 
-下载[刷机套件](https://github.com/WorldHim/jdc-ax1800pro-openwrt/releases/download/v1.0/jdc-ax1800pro-openwrt.7z)并解压备用
+下载[刷机套件](https://github.com/WorldHim/jdc-ax1800pro-openwrt/archive/refs/tags/v1.1.zip)并解压备用
 
 后续所有命令行操作均在仓库根目录下执行
 
@@ -237,20 +237,27 @@ md5sum /dev/mmcblk0p14
 ## 7. 刷固件
 
 1. 重复 5.2 操作进入 U-Boot；
-2. 打开 `http://192.168.1.1/`，选择 `libwrt-factory.bin`，点击「更新固件」。
+2. 打开 `http://192.168.1.1/`，选择 `openwrt-squashfs-factory.bin`，点击「更新固件」。
 
 
 ## 8. 成功
 
-访问 `http://192.168.1.1/`，用户名为 root，密码为空，直接点击登录即可。
+访问 `http://192.168.1.1/`，用户名为 `root`，密码为 `password`，直接点击登录即可。
 
 
 ### 9. 改回防火墙
 
-
 ```powershell
 Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 ```
+
+---
+
+## 26/10/29 update
+已知 `nss_offload=1` 会导致运行一段时间后死机，建议设置 `nss_offload=0` 让 cpu 处理。
+
+## 26/11/12 update
+更换支持 nss 的固件
 
 ---
 
@@ -300,7 +307,8 @@ Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 5. 数码罗记 [京东云无线宝 AX1800Pro 亚瑟 RE-SS-01 第三方OpenWrt刷机记录](https://godsun.pro/blog/jdc-ax1800pro-flash.html)
 6. 数码罗记 [京东云盒 IPQ6018 刷机指南](https://gwrt.uk/jdcloud-ipq6018-flash-guide.html)
 6. lgs2007m（咖啡猫）《分区备份 + TTL 双分区刷机 + 回原厂 + USB 救砖教程》
-7. 小猫佩奇、XOS（gwrt 文中致谢） 
+7. 小猫佩奇、XOS（gwrt 文中致谢）
+8. phyng [京东云 AX1800 Pro 路由器(亚瑟)刷入 u-boot 和 OpenWrt](https://phyng.com/2024/05/05/ax1800-openwrt.html)
 
 ### 固件
 
@@ -308,7 +316,8 @@ Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 |---|---|---|---|
 | `uboot-flashfiles-ss-01.bin` | [chenxin527/uboot-ipq60xx-emmc-build](https://github.com/chenxin527/uboot-ipq60xx-emmc-build) | [uboot-ipq60xx-emmc-jdcloud_re-ss-01-260102.153309.bin](https://github.com/chenxin527/uboot-ipq60xx-emmc-build/releases/download/26.01.02-15.33.09/uboot-ipq60xx-emmc-jdcloud_re-ss-01-260102.153309.bin) | `sha256:0fb6879f2bdb1bdc48f0dbcbbd8383ef3328f88c957601ce1e2363ffec647311` |
 | `gpt-AX1800Pro-rootfs2048M.bin` | [京东云盒 IPQ6018 刷机指南](https://gwrt.uk/jdcloud-ipq6018-flash-guide.html) | [gpt-AX1800Pro-rootfs2048M.bin](https://godsun.pro/wp-content/uploads/flash-files/gpt-AX1800Pro-rootfs2048M.bin) | `md5:4e68b53b2646a4824aed74a4f5b656ea` |
-| `libwrt-factory.bin` | [xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01) | [libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01/releases/download/re-ss-01-4-1/libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin) | `sha256:5241f47317f7148c1dba997d74775ef3343ecbc4fdb21c690ccf43bbd70fd6d6` |
+| `openwrt-squashfs-factory.bin` | [phyng/OpenWrt](https://github.com/phyng/OpenWrt) | [openwrt-qualcommax-ipq60xx-jdc_ax1800-pro-squashfs-factory.bin](https://github.com/phyng/OpenWrt/releases/download/IPQ60XX-6.6-WIFI(EMMC)/openwrt-qualcommax-ipq60xx-jdc_ax1800-pro-squashfs-factory.bin) | `sha256:8e1b0fe45aad68fd4584fdb8980e11f4b1695ad57128335863ab5b93e741964a` |
+| 已弃用: `libwrt-factory.bin` | [xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01) | [libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin](https://github.com/xiaofu2415/JDCloud-AX1800-Pro-RE-SS-01/releases/download/re-ss-01-4-1/libwrt-qualcommax-ipq60xx-jdcloud_re-ss-01-squashfs-factory.bin) | `sha256:5241f47317f7148c1dba997d74775ef3343ecbc4fdb21c690ccf43bbd70fd6d6` |
 
 ---
 
@@ -316,5 +325,3 @@ Remove-NetFirewallRule -DisplayName "AX1800 flash 8000"
 *部分代码由 AI 生成*
 
 ---
-
-本文采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) 许可协议。转载请注明出处！
